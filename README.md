@@ -1,6 +1,8 @@
 # protector
 PHP Authenticator, Session Manager and Router Controller for vanilla PHP applications.
 
+It implements a MVC controler to manage routes, and give access to models and views predefined.
+
 This project is a boiler plate just havin all the basic setup to:
 
  - Requires Authentication
