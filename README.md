@@ -59,4 +59,5 @@ SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 2 - Edit database/database.php to setup a database connection. Future TODO: TO use a external config file.
+
 3 - Install Apache http server and deploy the app
