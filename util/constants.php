@@ -6,7 +6,7 @@ class constants
 {
 
     //Defines the module name. Must start and end with /
-    public const MODULE_NAME = "/projects/auth/";
+    public const MODULE_NAME = "/protector/";
 
     //Default App Home page
     public const HOME_PAGE = "login";
