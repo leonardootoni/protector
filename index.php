@@ -5,8 +5,7 @@
  *
  * Author: Leonardo Otoni
  */
-
-require_once "util/class_loader.php";
+require_once "util/ClassLoader.php";
 $requestURI = removeModuleNameFromRoute($_SERVER['REQUEST_URI']);
 $route = removeQueryString($requestURI);
 dispatchRoute($route);
@@ -16,9 +15,9 @@ dispatchRoute($route);
  */
 function removeModuleNameFromRoute($requestURI)
 {
-    $moduleName = constants::MODULE_NAME;
+    $moduleName = AppConstants::MODULE_NAME;
     $requestURI = str_replace($moduleName, "", $requestURI);
-    return (!empty($requestURI) ? $requestURI : constants::HOME_PAGE);
+    return (!empty($requestURI) ? $requestURI : AppConstants::HOME_PAGE);
 }
 
 /**
@@ -36,13 +35,13 @@ function removeQueryString($requestURI)
  */
 function dispatchRoute($route)
 {
-    $controller = route_manager::getInstance()->getControllerForRoute($route);
+    $controller = RouteManager::getInstance()->getControllerForRoute($route);
     //$test = \strpos($controller, constants::PUBLIC_CONTROLLERS);
-    if ((\strpos($controller, constants::PUBLIC_CONTROLLERS) === false)) {
+    if ((\strpos($controller, AppConstants::PUBLIC_CONTROLLERS) === false)) {
         /* The controller is not public. Apply the SecurityFilter
          * A redirect to login page will be done if the user not survive in the Filter. :)
          */
-        security_filter::getInstance()->validateUserSession();
+        SecurityFilter::getInstance()->validateUserSession();
     }
 
     require_once dirname(__FILE__) . "/" . $controller;

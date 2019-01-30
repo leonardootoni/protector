@@ -3,7 +3,7 @@
  * Singleton class to store the application routes
  * Author: Leonardo Otoni
  */
-class routes
+class Routes
 {
     /**
      * All application routes must be defined here
@@ -11,9 +11,9 @@ class routes
      * controllers in the public/ folder will not require security
      */
     private static $routes = array(
-        "login" => "controllers/public/login.php",
-        "sign_up" => "controllers/public/sign_up.php",
-        "home" => "controllers/home.php",
+        "login" => "controllers/public/LoginController.php",
+        "sign_up" => "controllers/public/SignUpController.php",
+        "home" => "controllers/HomeController.php",
     );
 
     /**
@@ -33,7 +33,7 @@ class routes
     public static function getInstance()
     {
         if (!isset(self::$instance)) {
-            self::$instance = new routes();
+            self::$instance = new Routes();
         }
         return self::$instance;
     }

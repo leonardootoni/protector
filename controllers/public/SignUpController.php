@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $hash = filter_input(INPUT_POST, 'hash');
 
     try {
-        $userModel = new user();
+        $userModel = new UserModel();
         $userModel->registerUser($email, $firstName, $lastName, $hash, $birthday);
         header("Location: login");
     } catch (Exception $e) {

@@ -3,7 +3,7 @@
  * User Model
  * Author: Leonardo Otoni
  */
-class user
+class UserModel
 {
     /**
      * Default constructor
@@ -19,7 +19,7 @@ class user
     public function registerUser($email, $firstName, $lastName, $hash, $birthday)
     {
         if (empty($email) || empty($firstName) || empty($lastName) || empty($hash) || empty($birthday)) {
-            throw new Exception(constants::USER_REGISTER_DATA_EXCEPTION);
+            throw new Exception(AppConstants::USER_REGISTER_DATA_EXCEPTION);
         }
 
         $db = database::getConnection();
@@ -51,7 +51,7 @@ class user
     public function authenticateUser($email, $hash)
     {
         if (empty($email) || empty($hash)) {
-            throw new Exception(constants::USER_AUTHENTICATION_EXCEPTION);
+            throw new Exception(AppConstants::USER_AUTHENTICATION_EXCEPTION);
         }
 
         $userData = $this->getUserPasswordFromDB($email);
@@ -61,7 +61,7 @@ class user
         if ($isAuthenticated) {
             return $userData;
         } else {
-            throw new Exception(constants::INVALID_USER_PASSWORD_EXCEPTION);
+            throw new Exception(AppConstants::INVALID_USER_PASSWORD_EXCEPTION);
         }
     }
 
@@ -87,7 +87,7 @@ class user
                 return $userArray;
 
             } else {
-                throw new Exception(constants::USER_NOT_FOUND_EXCEPTION);
+                throw new Exception(AppConstants::USER_NOT_FOUND_EXCEPTION);
             }
 
         } catch (PDOException $e) {

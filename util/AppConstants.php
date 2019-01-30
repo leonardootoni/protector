@@ -2,7 +2,7 @@
 /**
  * GLOBAL APP CONSTANTS
  */
-class constants
+class AppConstants
 {
 
     //Defines the module name. Must start and end with /
@@ -37,7 +37,7 @@ class constants
     public const USER_AUTHENTICATION_EXCEPTION = "User data not provided.";
 
     //Default 404 Controller
-    public const _404_CONTROLLER = "controllers/public/_404.php";
+    public const _404_CONTROLLER = "controllers/public/_404Controller.php";
 
     //Controllers that not require session validation
     public const PUBLIC_CONTROLLERS = "controllers/public/";

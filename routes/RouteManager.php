@@ -4,7 +4,7 @@
  * If a route is not found, a generic 404 controller is provided. Controllers located in the public
  * subfolder will not pass on the Security Filter.
  */
-class route_manager
+class RouteManager
 {
     private static $instance = null;
     private function __construct()
@@ -14,7 +14,7 @@ class route_manager
     public static function getInstance()
     {
         if (!isset(self::$instance)) {
-            self::$instance = new route_manager();
+            self::$instance = new RouteManager();
         }
         return self::$instance;
     }
@@ -47,7 +47,7 @@ class route_manager
             $controller = $registredRoutes[$route];
         } else {
             //route not registred in the controll
-            $controller = constants::_404_CONTROLLER;
+            $controller = AppConstants::_404_CONTROLLER;
         }
         //}
 

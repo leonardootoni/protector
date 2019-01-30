@@ -6,7 +6,7 @@
  *
  * Author: Leonardo Otoni
  */
-class security_filter
+class SecurityFilter
 {
     private static $instance = null;
     private function __construct()
@@ -16,7 +16,7 @@ class security_filter
     public static function getInstance()
     {
         if (self::$instance == null) {
-            self::$instance = new security_filter();
+            self::$instance = new SecurityFilter();
         }
         return self::$instance;
     }
@@ -29,8 +29,8 @@ class security_filter
     {
         session_start();
         $userSessionData = null;
-        if (array_key_exists(constants::USER_SESSION_DATA, $_SESSION)) {
-            $userSessionData = $_SESSION[constants::USER_SESSION_DATA];
+        if (array_key_exists(AppConstants::USER_SESSION_DATA, $_SESSION)) {
+            $userSessionData = $_SESSION[AppConstants::USER_SESSION_DATA];
         }
 
         if (!isset($userSessionData)) {
@@ -39,8 +39,8 @@ class security_filter
         } else {
             //User logged in, now checks if session is expired
             $userRequestTime = $_SERVER["REQUEST_TIME"];
-            $userLastActivityTime = $_SESSION[constants::USER_LAST_ACTIVITY_TIME];
-            $sessionDuration = constants::SESSION_DURATION_IN_SECONDS;
+            $userLastActivityTime = $_SESSION[AppConstants::USER_LAST_ACTIVITY_TIME];
+            $sessionDuration = AppConstants::SESSION_DURATION_IN_SECONDS;
 
             $isSessionExpired = ($userRequestTime - $userLastActivityTime > $sessionDuration) ? true : false;
             if ($isSessionExpired) {
@@ -48,7 +48,7 @@ class security_filter
                 self::forceUserLogin();
             } else {
                 //update the user's last activity time
-                $_SESSION[constants::USER_LAST_ACTIVITY_TIME] = $userRequestTime;
+                $_SESSION[AppConstants::USER_LAST_ACTIVITY_TIME] = $userRequestTime;
             }
         }
     }
@@ -68,7 +68,7 @@ class security_filter
      */
     public static function forceUserLogin()
     {
-        header("Location: " . constants::LOGIN_PAGE);
+        header("Location: " . AppConstants::LOGIN_PAGE);
     }
 
 }
