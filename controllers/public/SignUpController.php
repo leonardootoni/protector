@@ -3,9 +3,9 @@
  * Controller to dispatch the user registration form
  * Author: Leonardo Otoni
  */
-
+const SIGN_UP_VIEW = "views/security/signup.html";
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-    require_once "views/security/sign_up.html";
+    require_once SIGN_UP_VIEW;
 } else {
     //form posted
     $email = filter_input(INPUT_POST, 'email');
@@ -21,6 +21,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     } catch (Exception $e) {
         session_start();
         $error_message = "Invalid Registration: " . $e->getMessage();
-        require_once "views/security/sign_up.html";
+        require_once SIGN_UP_VIEW;
     }
 }

@@ -1,8 +1,10 @@
 <?php
 require_once "util/ClassLoader.php";
 
+const LOGIN_VIEW = "views/security/login.html";
+
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-    require_once ROOT_PATH . "views/security/login_view.html";
+    require_once ROOT_PATH . LOGIN_VIEW;
 } else {
     //the user login form was posted
     $email = filter_input(INPUT_POST, 'email');
@@ -19,5 +21,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         $userAuthenticationErrorMsg = AppConstants::USER_AUTHENTICATION_ERROR_MSG;
     }
 
-    require_once ROOT_PATH . "views/security/login_view.html";
+    require_once ROOT_PATH . LOGIN_VIEW;
 }

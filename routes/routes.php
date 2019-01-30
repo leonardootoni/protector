@@ -12,7 +12,7 @@ class Routes
      */
     private static $routes = array(
         "login" => "controllers/public/LoginController.php",
-        "sign_up" => "controllers/public/SignUpController.php",
+        "signup" => "controllers/public/SignUpController.php",
         "home" => "controllers/HomeController.php",
     );
 
