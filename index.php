@@ -6,6 +6,11 @@
  * Author: Leonardo Otoni
  */
 require_once "util/ClassLoader.php";
+
+use \routes\RouteManager as RouteManager;
+use \util\AppConstants as AppConstants;
+use \util\SecurityFilter as SecurityFilter;
+
 $requestURI = removeModuleNameFromRoute($_SERVER['REQUEST_URI']);
 $route = removeQueryString($requestURI);
 dispatchRoute($route);
@@ -45,19 +50,5 @@ function dispatchRoute($route)
     }
 
     require_once dirname(__FILE__) . "/" . $controller;
-
-    /**
-    if ((\strpos($controller, constants::PUBLIC_CONTROLLERS) !== false)) {
-    //Not require scurity filter
-    require_once dirname(__FILE__) . "/" . $controller;
-    } else {
-    //
-    // The controller is not public. Apply the SecurityFilter
-    // A redirect to the login page will be done by the filter if the user not survive. :)
-    ///
-    security_filter::getInstance()->validateUserSession();
-    require_once dirname(__FILE__) . "/" . $controller;
-    }
-     */
 
 }

@@ -1,5 +1,7 @@
 <?php
 require_once "util/ClassLoader.php";
+use \models\UserModel as UserModel;
+use \util\AppConstants as AppConstants;
 
 const LOGIN_VIEW = "views/security/login.html";
 

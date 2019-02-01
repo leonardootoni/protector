@@ -4,54 +4,45 @@
  * If a route is not found, a generic 404 controller is provided. Controllers located in the public
  * subfolder will not pass on the Security Filter.
  */
-class RouteManager
-{
-    private static $instance = null;
-    private function __construct()
+namespace routes {
+
+    use \util\AppConstants as AppConstants;
+
+    class RouteManager
     {
-    }
 
-    public static function getInstance()
-    {
-        if (!isset(self::$instance)) {
-            self::$instance = new RouteManager();
+        private static $instance = null;
+        private function __construct()
+        {
         }
-        return self::$instance;
-    }
 
-    //Get controller from the routes class.
-    public function getControllerForRoute($route)
-    {
-        $controller = null;
-        $registredRoutes = routes::getInstance()->getRoutes();
-        //$staticResourseRoutes = routes::getInstance()->getRoutesStaticResources();
-
-        /*Static resources like css and js also do requests.
-         *For this cases, the controller will be the given route.*/
-        //TODO: To check if this case can be avoided through Apache .htaccess
-        //$isStaticResource = false;
-        /**
-        foreach ($staticResourseRoutes as $staticRoute) {
-        $test = (\strpos($route, $staticRoute) !== false);
-        if ((\strpos($route, $staticRoute) !== false)) {
-        $isStaticResource = true;
-        $controller = $route;
-        break;
+        public static function getInstance()
+        {
+            if (!isset(self::$instance)) {
+                self::$instance = new RouteManager();
+            }
+            return self::$instance;
         }
-        }
-         */
 
-        //if (!$isStaticResource) {
-        if (array_key_exists($route, $registredRoutes)) {
-            //route was found
-            $controller = $registredRoutes[$route];
-        } else {
-            //route not registred in the controll
-            $controller = AppConstants::_404_CONTROLLER;
-        }
-        //}
+        //Get controller from the routes class.
+        public function getControllerForRoute($route)
+        {
+            $controller = null;
+            $registredRoutes = routes::getInstance()->getRoutes();
 
-        return $controller;
+            /*Static resources like css and js also do requests.
+             *For this cases, the controller will be the given route.*/
+            if (array_key_exists($route, $registredRoutes)) {
+                //route was found
+                $controller = $registredRoutes[$route];
+            } else {
+                //route not registred in the controll
+                $controller = AppConstants::_404_CONTROLLER;
+            }
+
+            return $controller;
+        }
+
     }
 
 }

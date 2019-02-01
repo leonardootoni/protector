@@ -5,40 +5,46 @@
  *
  * Author: Leonardo Otoni
  */
-class database
-{
-    private static $db;
-    private static $instance = null;
+namespace Database {
 
-    private function __construct()
-    {
-    }
+    use \PDO;
 
-    /**
-     * Returns a PDO Connection to the Database
-     */
-    public static function getConnection()
+    class Database
     {
-        if (self::$instance == null) {
-            self::$instance = new Database();
-            self::$instance->connectToDatabase();
+        private static $db;
+        private static $instance = null;
+
+        private function __construct()
+        {
         }
-        return self::$db;
-    }
 
-    private static function connectToDatabase()
-    {
-        //TODO: Move the connection data to config class
-        $db_dsn = 'mysql:host=localhost;dbname=php';
-        $db_username = 'php';
-        $db_password = 'php';
-
-        try {
-            self::$db = new PDO($db_dsn, $db_username, $db_password);
-            self::$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        } catch (Exception $e) {
-            throw $e;
+        /**
+         * Returns a PDO Connection to the Database
+         */
+        public static function getConnection()
+        {
+            if (self::$instance == null) {
+                self::$instance = new Database();
+                self::$instance->connectToDatabase();
+            }
+            return self::$db;
         }
+
+        private static function connectToDatabase()
+        {
+            //TODO: Move the connection data to config class
+            $db_dsn = 'mysql:host=localhost;dbname=php';
+            $db_username = 'php';
+            $db_password = 'php';
+
+            try {
+                self::$db = new PDO($db_dsn, $db_username, $db_password);
+                self::$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            } catch (Exception $e) {
+                throw $e;
+            }
+        }
+
     }
 
 }

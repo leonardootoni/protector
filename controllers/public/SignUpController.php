@@ -3,7 +3,11 @@
  * Controller to dispatch the user registration form
  * Author: Leonardo Otoni
  */
+
+use \models\UserModel as UserModel;
+
 const SIGN_UP_VIEW = "views/security/signup.html";
+
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     require_once SIGN_UP_VIEW;
 } else {

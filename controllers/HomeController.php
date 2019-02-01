@@ -1,5 +1,11 @@
 <?php
-//Basic user information
+/**
+ * App Home Page Controller
+ */
+require_once "util/ClassLoader.php";
+
+use \util\AppConstants as AppConstants;
+
 $userData = $_SESSION[AppConstants::USER_SESSION_DATA];
 $firstName = $userData["firstName"];
 
