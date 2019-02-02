@@ -1,6 +1,8 @@
 <?php
 /**
  * GLOBAL APP CONSTANTS
+ *
+ * Author: Leonardo Otoni
  */
 
 namespace util {
