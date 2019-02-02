@@ -14,6 +14,7 @@ namespace routes {
          */
         private static $routes = array(
             "login" => "controllers/public/LoginController.php",
+            "logout" => "controllers/public/LogoutController.php",
             "signup" => "controllers/public/SignUpController.php",
             "home" => "controllers/HomeController.php",
         );

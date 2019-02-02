@@ -61,9 +61,8 @@ namespace util {
          */
         public static function invalidadeUserSession()
         {
-            session_unset();
-            session_destroy();
             session_start();
+            session_destroy();
         }
 
         /**

@@ -8,7 +8,7 @@ namespace util {
     class AppConstants
     {
 
-        //Defines the module name. Must start and end with /
+        //Defines the module name. It must start and end with /
         public const MODULE_NAME = "/protector/";
 
         //Default App Home page
@@ -16,11 +16,17 @@ namespace util {
 
         public const HOME_PAGE_INTRANET = "home";
 
+        //Default TimeZone - It will reflect when working with date / dateTime objects
+        public const DEFAULT_TIME_ZONE = "America/Toronto";
+
+        //Max login attempts before block a user
+        public const MAX_LOGIN_ATTEMPS = 3;
+
         //Default login page address
         public const LOGIN_PAGE = self::MODULE_NAME . "login";
 
         //The session lifespan limit in seconds. Default 300 seconds (5 min).
-        public const SESSION_DURATION_IN_SECONDS = 300;
+        public const SESSION_DURATION_IN_SECONDS = 5;
 
         //User authenticated data [id, email]
         public const USER_SESSION_DATA = "USER_SESSION_DATA";
@@ -32,12 +38,6 @@ namespace util {
 
         //General Error Messages
         public const USER_AUTHENTICATION_ERROR_MSG = "Invalid email or password.";
-
-        //General Exception Messages
-        public const INVALID_USER_PASSWORD_EXCEPTION = "Password not match.";
-        public const USER_NOT_FOUND_EXCEPTION = "User not found into database.";
-        public const USER_REGISTER_DATA_EXCEPTION = "Not all user data was provided to be inserted.";
-        public const USER_AUTHENTICATION_EXCEPTION = "User data not provided.";
 
         //Default 404 Controller
         public const _404_CONTROLLER = "controllers/public/_404Controller.php";

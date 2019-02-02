@@ -6,7 +6,7 @@
  * Author: Leonardo Otoni
  */
 
-define("ROOT_PATH", dirname(__FILE__, 2) . "/");
+//define("ROOT_PATH", dirname(__FILE__, 2) . "/");
 
 spl_autoload_register(function ($class) {
     $classPath = str_replace("\\", DIRECTORY_SEPARATOR, $class);

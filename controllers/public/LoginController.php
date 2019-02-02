@@ -1,27 +1,36 @@
 <?php
-require_once "util/ClassLoader.php";
-use \models\UserModel as UserModel;
-use \util\AppConstants as AppConstants;
+/**
+ * Default app login controller.
+ *
+ * Author: Leonardo Otoni
+ */
+namespace controllers\publicControllers {
 
-const LOGIN_VIEW = "views/security/login.html";
+    use Exception;
+    use \models\UserModel as UserModel;
+    use \util\AppConstants as AppConstants;
 
-if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-    require_once ROOT_PATH . LOGIN_VIEW;
-} else {
-    //the user login form was posted
-    $email = filter_input(INPUT_POST, 'email');
-    $hash = filter_input(INPUT_POST, 'hash');
+    const LOGIN_VIEW = "views/security/login.html";
 
-    try {
-        $userModel = new UserModel();
-        $userData = $userModel->authenticateUser($email, $hash);
-        session_start();
-        $_SESSION[AppConstants::USER_SESSION_DATA] = $userData;
-        $_SESSION[AppConstants::USER_LAST_ACTIVITY_TIME] = $_SERVER["REQUEST_TIME"];
-        header("Location: " . AppConstants::HOME_PAGE_INTRANET);
-    } catch (Exception $e) {
-        $userAuthenticationErrorMsg = AppConstants::USER_AUTHENTICATION_ERROR_MSG;
+    if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+        require_once ROOT_PATH . LOGIN_VIEW;
+    } else {
+        //the user login form was posted
+        $email = filter_input(INPUT_POST, 'email');
+        $hash = filter_input(INPUT_POST, 'hash');
+
+        try {
+            $userModel = new UserModel();
+            $userData = $userModel->authenticateUser($email, $hash);
+            session_start();
+            $_SESSION[AppConstants::USER_SESSION_DATA] = $userData;
+            $_SESSION[AppConstants::USER_LAST_ACTIVITY_TIME] = $_SERVER["REQUEST_TIME"];
+            header("Location: " . AppConstants::HOME_PAGE_INTRANET);
+        } catch (Exception $e) {
+            $userAuthenticationErrorMsg = AppConstants::USER_AUTHENTICATION_ERROR_MSG;
+        }
+
+        require_once ROOT_PATH . LOGIN_VIEW;
     }
 
-    require_once ROOT_PATH . LOGIN_VIEW;
 }

@@ -7,6 +7,7 @@
  */
 namespace Database {
 
+    use Exception;
     use \PDO;
 
     class Database

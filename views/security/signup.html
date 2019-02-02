@@ -5,7 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Authentication</title>
+  <title>Registration</title>
+  <link rel="icon" href="static/img/cardiogram.png" type="image/x-icon" />
   <link rel="stylesheet" href="static/css/main.css">
 
   <!-- BEGIN: BOOTSTRAP Latest compiled and minified CSS -->
@@ -14,12 +15,13 @@
   <!-- END: BOOTSTRAP Latest compiled and minified CSS -->
 
 
+
 </head>
 
 <body>
   <div class="container-fluid h-100 bg-light text-dark">
     <div class="row justify-content-center align-items-center h-100">
-      <div class="col-11 col-sm-7 col-md-6 col-lg-5 col-xl-4">
+      <div class="col-md-8 col-12">
         <div class="card">
           <div class="card-header bg-white d-flex justify-content-center align-items-center">
             <div><i class="fas fa-3x fa-user-circle"></i></div>
@@ -35,64 +37,65 @@
               <?php echo $userAuthenticationErrorMsg ?>
             </div>
             <?php endif;?>
-            <form action="sign_up" method="POST">
+            <form id="form-signup" action="signup" method="POST">
+
               <div class="row">
                 <div class="col form-group">
                   <label for="firstName">First Name:</label>
-                  <input id="firstName" class="form-control" type="text" name="firstName" placeholder="First Name" required />
+                  <input id="firstName" class="form-control" type="text" name="firstName" required />
                 </div>
                 <div class="col form-group">
                   <label for="lastName">Last Name:</label>
-                  <input id="lastName" class="form-control" type="text" name="lastName" placeholder="Last Name" required />
+                  <input id="lastName" class="form-control" type="text" name="lastName" required />
                 </div>
               </div>
 
-
               <div class="row">
-                <div class="input-append date" id="datetimepicker" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
-                  <input class="span2" size="16" type="text" value="12-02-2012">
-                  <span class="add-on"><i class="icon-th"></i></span>
-                </div>
-              </div>
-
-
-
-
-              <div class="row">
-                <div class="input-append date form_datetime">
-                  <input size="16" type="text" value="" readonly>
-                  <span class="add-on"><i class="icon-th"></i></span>
+                <div class="col form-group">
+                  <label for="email">Email:</label>
+                  <input id="email" class="form-control" type="text" name="email" required />
                 </div>
 
-                <script type="text/javascript">
-                  $(".form_datetime").datetimepicker({
-                    format: "dd MM yyyy - hh:ii",
-                    autoclose: true,
-                    todayBtn: true,
-                    pickerPosition: "bottom-left"
-                  });
-                </script>
+                <div class="col form-group">
+                  <label for="dob">Date of Birthday:</label>
+                  <div class="input-group ">
+                    <input type="text" class="form-control" id="dt-birthday" name="birthday" required>
+                    <div class="input-group-append">
+                      <span class="input-group-text"><i class="fas fa-calendar"></i></span>
+                    </div>
+                  </div>
+
+                </div>
               </div>
 
               <div class="row">
                 <div class="col">
                   <div class="form-group">
                     <label for="password">Password:</label>
-                    <input id="password" class="form-control" type="password" name="password" placeholder="password" size="15" with="15">
+                    <input id="password" class="form-control" type="password" name="password" required>
                   </div>
                 </div>
                 <div class="col">
                   <div class="form-group">
                     <label for="confirmPassword">Confirm Password:</label>
-                    <input id="confirmPassword" class="form-control" type="password" name="confirmPassword" placeholder="Confirm Password" size="15" with="15">
+                    <input id="confirmPassword" class="form-control" type="password" name="confirmPassword" required>
                   </div>
                 </div>
               </div>
 
-              <div class="form-group">
-                <input id="submitBtn" class="btn btn-danger btn-block" type="submit" value="Sign-up">
-                <a href="<?=AppConstants::MODULE_NAME?>" class="btn btn-warning btn-block">Cancel</a>
+              <div class="row mt-3">
+                <div class="col-3">
+                  <div class="form-group">
+                    <input id="submitBtn" class="btn btn-primary btn-block" type="submit" value="Sign-up">
+                  </div>
+                </div>
+                <div class="col-3">
+                  <div class="form-group">
+                    <a href="<?=$moduleName?>" class="btn btn-secondary btn-block">Cancel</a>
+                  </div>
+                </div>
               </div>
+
               <input type="hidden" name="hash" id="hash">
             </form>
           </div>
@@ -100,68 +103,27 @@
       </div>
     </div>
     <!-- BOOTSTRAP -->
-    <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-    <!-- Popper JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
-
-    <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
-
-
-    <!-- BEGIN: Tempus Dominus -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/css/tempusdominus-bootstrap-4.min.css" />
-    <!-- END: Tempus Dominus -->
-
-
-
-
-
 
     <!-- SPECIFIC PAGE JS FILES -->
     <script src="static/js/sha1.min.js"></script>
-    <script src="static/js/hash_procedures.js"></script>
+    <script src="static/js/security.js"></script>
 
-</body>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+    <script>
+
+
+      $("#dt-birthday").flatpickr({
+        enableTime: false,
+        dateFormat: "Y-m-d",
+      });
+
+
+
+    </script>
 
 </html>
-
-
-<body>
-  <?php if(isset($error_message)) { echo $error_message;}?>
-  <div>
-    <form action="sign_up" method="POST">
-      <div>
-        <label for="email">Email:</label>
-        <input type="text" name="email" id="email" size="50" with="50" />
-      </div>
-      <div>
-        <label for="firstName">First Name:</label>
-        <input type="text" name="firstName" id="firstName" size="50" with="50" />
-      </div>
-      <div>
-        <label for="lastName">Last Name:</label>
-        <input type="text" name="lastName" id="lastName" size="50" with="50" />
-      </div>
-      <div>
-        <label for="birthday">Birthday:</label>
-        <input type="text" name="birthday" id="birthday" />
-      </div>
-      <div>
-        <label for="password">Password:</label>
-        <input type="password" name="password" id="password" size="50" with="50" />
-        <input type="hidden" name="hash" id="hash" />
-      </div>
-      <div>
-        <label for="confirmPassword">Confirm Password:</label>
-        <input type="password" name="confirmPassword" id="confirmPassword" size="50" with="50" />
-      </div>
-      <div><input id="submitBtn" type="submit" value="Register" /></div>
-    </form>
-  </div>
-  <script src="static/js/sha1.min.js"></script>
-  <script src="static/js/hash_procedures.js"></script>
-</body>

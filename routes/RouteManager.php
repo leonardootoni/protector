@@ -36,11 +36,12 @@ namespace routes {
                 //route was found
                 $controller = $registredRoutes[$route];
             } else {
-                //route not registred in the controll
+                //route not registred in the controll, it will throw 404 :)
                 $controller = AppConstants::_404_CONTROLLER;
             }
 
             return $controller;
+
         }
 
     }

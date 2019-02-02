@@ -5,11 +5,15 @@
  *
  * Author: Leonardo Otoni
  */
-require_once "util/ClassLoader.php";
+
+define("ROOT_PATH", dirname(__FILE__, 1) . "/");
+require_once ROOT_PATH . "util/ClassLoader.php";
 
 use \routes\RouteManager as RouteManager;
 use \util\AppConstants as AppConstants;
 use \util\SecurityFilter as SecurityFilter;
+
+date_default_timezone_set(AppConstants::DEFAULT_TIME_ZONE);
 
 $requestURI = removeModuleNameFromRoute($_SERVER['REQUEST_URI']);
 $route = removeQueryString($requestURI);
@@ -49,6 +53,6 @@ function dispatchRoute($route)
         SecurityFilter::getInstance()->validateUserSession();
     }
 
-    require_once dirname(__FILE__) . "/" . $controller;
+    require_once ROOT_PATH . "/" . $controller;
 
 }

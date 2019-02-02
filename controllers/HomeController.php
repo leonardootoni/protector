@@ -2,11 +2,14 @@
 /**
  * App Home Page Controller
  */
-require_once "util/ClassLoader.php";
 
-use \util\AppConstants as AppConstants;
+namespace controller {
 
-$userData = $_SESSION[AppConstants::USER_SESSION_DATA];
-$firstName = $userData["firstName"];
+    use \util\AppConstants as AppConstants;
 
-require_once "views/home.html";
+    $userData = $_SESSION[AppConstants::USER_SESSION_DATA];
+    $firstName = $userData["firstName"];
+
+    require_once "views/home.html";
+
+}

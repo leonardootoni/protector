@@ -1,9 +1,12 @@
 <?php
-require_once "util/ClassLoader.php";
-use \util\AppConstants as AppConstants;
 
-//Metadata used by the _404.html file
-$moduleName = AppConstants::MODULE_NAME;
-$homePage = AppConstants::HOME_PAGE;
+namespace controllers\publicControllers {
 
-require_once "views/errors/_404.html";
+    use \util\AppConstants as AppConstants;
+
+    //Metadata used by the _404.html file
+    $urlHomePage = AppConstants::MODULE_NAME . AppConstants::HOME_PAGE;
+    $backgroundImage = AppConstants::MODULE_NAME . "static/img/404_background.jpg";
+    require_once "views/errors/_404.html";
+
+}
