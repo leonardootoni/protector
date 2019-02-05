@@ -92,14 +92,6 @@ all we gonna work in a centralized repository, the best approach is to set the e
   11 - Bootstrap date-picker library
 
 
-  Todo: Define through next group meetings:
-
-  1 - Default template engine, whether we will gona use one or not;
-
-  2 - Front-end form validation library;
-
-
-
 ======= <<<<<<<<< MAIN PROJECT FOLDER STRUCTURE >>>>>>>>> =======
 
   1 - controllers -> Stores all route controllers. It can be organized by subfolders
