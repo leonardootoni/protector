@@ -3,19 +3,20 @@ PHP Authenticator, Session Manager and Router Controller for vanilla PHP applica
 
 It implements a MVC controler to manage routes, and give access to models and views predefined.
 
-This project is a boiler plate just havin all the basic setup to:
+This project is a boiler plate just having all the basic setup to:
 
- - Requires Authentication
+ - Require Authentication
  _ Generate Password token using SHA 128, 256 or 512 in the client
  - Not allow plain password from client to the server, even outside https, which guarantee a minimun security requirement
- - Dinamically manage the User Session, invalidate when it expires
+ - Dinamically manage the User Session, invalidating when it expires
  - Allow access to defined public routes not requiring authentication
  - Allow access to defined protected routes through authentication services
- - Register uses in Database
+ - Register users in Database
  - Blocks invalid login attemps
  - Generate log for all login attempts as well as the last successful user login.
  - Not allow direct access to PHP files
- - Friendly 404 view
+ - Friendly 404/500 views
+ - Advanced form validation in the front-end
 
 
 ======= <<<<<<<<< GENERAL INSTRUCTIONS TO SETUP THE ENVIRONMENT >>>>>>>>> =======
