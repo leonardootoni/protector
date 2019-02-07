@@ -109,8 +109,9 @@ all we gonna work in a centralized repository, the best approach is to set the e
   7 - views -> Stores all html files
 
 
-#External Dependencies used in this projects
+#External Dependencies used in this project
 
 1 - Bootstrap 4
 2 - jQuery Form Validation: https://jqueryvalidation.org
 3 - js-sha1: https://github.com/emn178/js-sha1
+4 - flatpickr: https://github.com/flatpickr/flatpickr
